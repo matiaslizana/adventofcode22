@@ -7,17 +7,16 @@
 void GetParams(std::string line, const std::string& delimiter, std::vector<std::string>& paramsOutput)
 {
     size_t pos = 0;
-    std::string token;
     while ((pos = line.find(delimiter)) != std::string::npos)
     {
-        token = line.substr(0, pos);
+        std::string token = line.substr(0, pos);
         paramsOutput.push_back(token);
         line.erase(0, pos + delimiter.length());
     }
     paramsOutput.push_back(line);
 }
 
-bool startsWith(const std::string& str, const std::string& prefix) {
+bool StartsWith(const std::string& str, const std::string& prefix) {
     return str.substr(0, prefix.size()) == prefix;
 }
 
@@ -37,7 +36,7 @@ int main()
 
     while (std::getline(inputFile, line))
     {
-        if (startsWith(line, "Monkey"))
+        if (StartsWith(line, "Monkey"))
             monkeys.push_back(std::make_shared<Monkey>());
     }
 
@@ -82,7 +81,7 @@ int main()
     
     inputFile.close();
 
-    const int numRounds = 20;
+    constexpr int numRounds = 20;
 
     for (int round = 0; round < numRounds; round++)
     {
@@ -102,11 +101,11 @@ int main()
         }
         std::cout << std::endl;
     }
-    
-    std::vector<int> mostInspectedMonkeys {};
 
-    for (std::shared_ptr<Monkey> m : monkeys)
-        mostInspectedMonkeys.push_back(m->GetInspectedItems());
+    std::vector<int> mostInspectedMonkeys (monkeys.size());
+
+    for (int i = 0; i < monkeys.size(); i++)
+        mostInspectedMonkeys[i] = monkeys[i]->GetInspectedItems();
 
     std::sort(mostInspectedMonkeys.begin(), mostInspectedMonkeys.end());
     std::reverse(mostInspectedMonkeys.begin(), mostInspectedMonkeys.end());
