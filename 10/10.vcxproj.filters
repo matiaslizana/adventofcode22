@@ -19,4 +19,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="input" />
+    <None Include="exampleInput" />
+  </ItemGroup>
 </Project>
