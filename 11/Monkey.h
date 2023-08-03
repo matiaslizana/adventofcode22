@@ -23,8 +23,8 @@ public:
 	void SetDivisible(const int divisible);
 	void SetTrueMonkey(const std::shared_ptr<Monkey> monkey);
 	void SetFalseMonkey(const std::shared_ptr<Monkey> monkey);
-	int GetOperatedValue(int item);
-	void ThrowItem(const std::shared_ptr<Monkey> monkey, int item);
+	int GetOperatedValue(const int item);
+	void ThrowItem(const std::shared_ptr<Monkey> monkey, const int item);
 	void ShowItems();
 	int GetInspectedItems();
 	void Turn();

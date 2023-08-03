@@ -20,7 +20,7 @@ void Monkey::SetDivisible(const int divisible)
 	this->divisible = divisible;
 }
 
-int Monkey::GetOperatedValue(int item)
+int Monkey::GetOperatedValue(const int item)
 {
 	int newItem = operationVal.compare("old") == 0 ? item : stoi(operationVal);
 
@@ -29,9 +29,11 @@ int Monkey::GetOperatedValue(int item)
 
 	if (operationOp.compare("+") == 0)
 		return newItem + item;
+
+	return 0;
 }
 
-void Monkey::ThrowItem(const std::shared_ptr<Monkey> monkey, int item)
+void Monkey::ThrowItem(const std::shared_ptr<Monkey> monkey, const int item)
 {
 	monkey->AddItem(item);
 }
